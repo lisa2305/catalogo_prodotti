@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+    <title>HomePage</title>
+</head>
+
+<body>
+    <div>
+        <header class="my-2">
+            <h2>Lista prodotti</h2>
+            <a th:href="@{/prodotto/elimina}" class="btn btn-danger">Elimina tutto</a>
+            <a th:href="@{/prodotto/nuovo}" class="btn btn-success">Nuovo prodotto</a>
+        </header>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="col-1">codice</th>
+                    <th class="col-2">nome</th>
+                    <th class="col-2">categoria</th>
+                    <th class="col-2">anno produzione</th>
+                    <th class="col-1">quantità</th>
+                    <th class="col-2">dettagli prodotto</th>
+                    <th class="col-2">Elimina</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>123456</td>
+                    <td>scopa</td>
+                    <td>oggetti pulizia</td>
+                    <td>2023</td>
+                    <td>501</td>
+                    <td><a th:href="@{/prodotto/{codice}}" class="btn btn-primary">Dettagli</a></td>
+                    <td>
+                        <!-- pulsante di azione -->
+                        <a th:href="@{'/prodotti/elimina/'+${c.codice}}" class="btn btn-danger">Elimina</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>888456</td>
+                    <td>porta</td>
+                    <td>oggetto</td>
+                    <td>2020</td>
+                    <td>22</td>
+                    <td><a th:href="@{/prodotto/{codice}}" class="btn btn-primary">Dettagli</a></td>
+                    <td>
+                        <!-- pulsante di azione -->
+                        <a th:href="@{'/prodotti/elimina/'+${c.codice}}" class="btn btn-danger">Elimina</a>
+                    </td>
+                </tr>
+                <tr th:each="c: ${object}">
+                    <td th:text="${c.codice}"></td>
+                    <td th:text="${c.nome}"></td>
+                    <td th:text="${c.categoria}"></td>
+                    <td th:text="${c.annoProduzione}"></td>
+                    <td th:text="${c.quantità}"></td>
+                    <td><a th:href="@{/prodotto/{codice}}" class="btn btn-primary">Dettagli</a></td>
+                    <td>
+                        <!-- pulsante di azione -->
+                        <a th:href="@{'/prodotti/elimina/'+${c.codice}}" class="btn btn-danger">Elimina</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
