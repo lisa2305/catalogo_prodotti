@@ -35,10 +35,9 @@
                     <td>2023</td>
                     <td>501</td>
                     <td><a th:href="@{/prodotto/{codice}}" class="btn btn-primary">Dettagli</a></td>
-                    <td>
-                        <!-- pulsante di azione -->
+                     <!--<td>
                         <a th:href="@{'/prodotti/elimina/'+${c.codice}}" class="btn btn-danger">Elimina</a>
-                    </td>
+                    </td>-->
                 </tr>
                 <tr>
                     <td>888456</td>
@@ -47,10 +46,9 @@
                     <td>2020</td>
                     <td>22</td>
                     <td><a th:href="@{/prodotto/{codice}}" class="btn btn-primary">Dettagli</a></td>
-                    <td>
-                        <!-- pulsante di azione -->
+                  <!--<td>
                         <a th:href="@{'/prodotti/elimina/'+${c.codice}}" class="btn btn-danger">Elimina</a>
-                    </td>
+                    </td>-->
                 </tr>
                 <tr th:each="c: ${object}">
                     <td th:text="${c.codice}"></td>
@@ -59,10 +57,9 @@
                     <td th:text="${c.annoProduzione}"></td>
                     <td th:text="${c.quantità}"></td>
                     <td><a th:href="@{/prodotto/{codice}}" class="btn btn-primary">Dettagli</a></td>
-                    <td>
-                        <!-- pulsante di azione -->
+                    <!--<td>
                         <a th:href="@{'/prodotti/elimina/'+${c.codice}}" class="btn btn-danger">Elimina</a>
-                    </td>
+                    </td>-->
                 </tr>
             </tbody>
         </table>

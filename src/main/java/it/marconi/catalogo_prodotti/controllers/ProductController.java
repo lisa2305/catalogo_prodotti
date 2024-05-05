@@ -15,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import it.marconi.catalogo_prodotti.services.ProductService;
 import java.util.Optional;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/")
