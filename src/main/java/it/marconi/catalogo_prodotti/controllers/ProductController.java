@@ -13,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import it.marconi.catalogo_prodotti.domains.Product;
 import it.marconi.catalogo_prodotti.services.ProductService;
 import java.util.Optional;
 
@@ -30,21 +31,21 @@ public class ProductController {
 
     @GetMapping("/prodotto/nuovo")
     public ModelAndView newProduct(){
-        return new ModelAndView("nuovoProdotto").addObject("newProduct",new Object());
+        return new ModelAndView("nuovoProdotto").addObject("newProduct",new Product());
     }
 
     @PostMapping("/prodotto/nuovo")
-    public ModelAndView handlerNewProduct(@ModelAttribute Object o){
+    public ModelAndView handlerNewProduct(@ModelAttribute Product o){
         productService.addProduct(o); 
 
-        //String name = o.getName(); 
-        //return new ModelAndView("redirect:/user/" + name);
+        String name = o.getNome(); 
+        return new ModelAndView("redirect:/prodotto/" + name);
     }
 
      @GetMapping("/prodotto/{codice}")
     public  ModelAndView userDetail(@PathVariable("codice") String codice) {
 
-        Optional<Object> product = productService.getUserByCode(codice);
+        Optional<Product> product = productService.getUserByCode(codice);
 
         if (product.isPresent())
             return new ModelAndView("dettagli-prodotto").addObject("product", product.get());
@@ -54,7 +55,7 @@ public class ProductController {
 
       @GetMapping("/prodotti/elimina/{codice}") 
     public ModelAndView deleteContact(
-        @PathVariable("codice") Object codice,
+        @PathVariable("codice") Product codice,
         RedirectAttributes attr
     ) {
         productService.deleteById(codice); 

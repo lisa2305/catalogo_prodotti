@@ -9,6 +9,11 @@
 </head>
 
 <body>
+    <div class="col-3 my-2">
+        <div class="alert alert-info" role="alert" th:if="${deleted != null}"> 
+            Contatto eliminato!
+        </div>
+    </div>
     <div>
         <header class="my-2">
             <h2>Lista prodotti</h2>
@@ -35,9 +40,9 @@
                     <td>2023</td>
                     <td>501</td>
                     <td><a th:href="@{/prodotto/{codice}}" class="btn btn-primary">Dettagli</a></td>
-                     <!--<td>
-                        <a th:href="@{'/prodotti/elimina/'+${c.codice}}" class="btn btn-danger">Elimina</a>
-                    </td>-->
+                    <td>
+                        <a th:href="@{'/prodotto/elimina/'+${codice}}" class="btn btn-danger">Elimina</a>
+                    </td>
                 </tr>
                 <tr>
                     <td>888456</td>
@@ -46,9 +51,9 @@
                     <td>2020</td>
                     <td>22</td>
                     <td><a th:href="@{/prodotto/{codice}}" class="btn btn-primary">Dettagli</a></td>
-                  <!--<td>
-                        <a th:href="@{'/prodotti/elimina/'+${c.codice}}" class="btn btn-danger">Elimina</a>
-                    </td>-->
+                    <td>
+                        <a th:href="@{'/prodotto/elimina/'+${codice}}" class="btn btn-danger">Elimina</a>
+                    </td>
                 </tr>
                 <tr th:each="c: ${object}">
                     <td th:text="${c.codice}"></td>
@@ -57,9 +62,9 @@
                     <td th:text="${c.annoProduzione}"></td>
                     <td th:text="${c.quantità}"></td>
                     <td><a th:href="@{/prodotto/{codice}}" class="btn btn-primary">Dettagli</a></td>
-                    <!--<td>
-                        <a th:href="@{'/prodotti/elimina/'+${c.codice}}" class="btn btn-danger">Elimina</a>
-                    </td>-->
+                    <td>
+                        <a th:href="@{'/prodotto/elimina/'+${c.codice}}" class="btn btn-danger">Elimina</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

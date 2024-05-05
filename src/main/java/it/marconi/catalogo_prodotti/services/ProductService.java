@@ -3,27 +3,26 @@ package it.marconi.catalogo_prodotti.services;
 import java.util.ArrayList;
 import java.util.Optional;
 
-
 import org.springframework.stereotype.Service;
 
-import it.marconi.catalogo_prodotti.domains.Object;
+import it.marconi.catalogo_prodotti.domains.Product;
 
 @Service
 public class ProductService {
 
-    private ArrayList<Object> objects = new ArrayList<>();
+    private ArrayList<Product> objects = new ArrayList<>();
 
-    public ArrayList<Object> getUsers() {
+    public ArrayList<Product> getUsers() {
         return objects;
     }
 
-    public void addProduct(Object newObjects) {
+    public void addProduct(Product newObjects) {
         objects.add(newObjects);
     }
 
-    public Optional<Object> getUserByCode(String code) {
+    public Optional<Product> getUserByCode(String code) {
 
-        for(Object u : objects) {
+        for(Product u : objects) {
             if(u.getCodice().equals(code)) {
                 return Optional.of(u);
             }
@@ -32,7 +31,7 @@ public class ProductService {
     }
 
     //da verificare
-    public void deleteById(Object codice) {
+    public void deleteById(Product codice) {
        
     }
 }
