@@ -22,16 +22,26 @@ public class ProductService {
 
     public Optional<Product> getUserByCode(String code) {
 
-        for(Product u : objects) {
-            if(u.getCodice().equals(code)) {
+        for (Product u : objects) {
+            if (u.getCodice().equals(code)) {
                 return Optional.of(u);
             }
         }
         return Optional.empty();
     }
 
-    //da verificare
-    public void deleteById(Product codice) {
-       
+    // metodo che permette l'eliminazione di tutto il catalogo
+    public ArrayList<Product> deleteAll() {
+        objects.clear();
+        return objects;
+    }
+
+    public ArrayList<Product> deleteById(String codice) {
+        for (int index = 0; index < objects.size(); index++) {
+            if(objects.get(index).getCodice().equals(codice)){
+                objects.remove(index);
+            }
+        }
+        return objects;
     }
 }
